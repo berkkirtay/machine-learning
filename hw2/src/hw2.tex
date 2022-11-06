@@ -1,0 +1,111 @@
+\documentclass{homework}
+\usepackage{amsmath}
+
+\title
+{
+CSE4088 Introduction to Machine Learning 
+Homework 2
+}
+
+\date{}
+\author{Berk Kırtay - 150118043}
+\begin{document}
+\maketitle
+
+\section*{Generalization Error}
+\[
+\text{The formula changes when we apply €=0.005 and M=1: }
+P[|E_{in} - E_{out}| > 0.05] <= 2*e^{\frac{-1}{200}*N} <= 0.003
+\]
+\subsection*{1.}
+\[
+ \text{For } N=500 -> 2*e^{\frac{-5}{2}} = 0.164  \text{ which is greater than 0.03}
+\]
+So we can calculate by trying different values of N.
+\[
+ \text{For } N=1000 -> 2*e^{\frac{-1}{200}*1000} = 0.0134  \text{ which is less than 0.03}
+\]
+Answer is N=1000, B.
+
+\subsection*{2.}
+\[
+ \text{For } N=1500 -> 2*e^{\frac{-1}{200}*1500} = 0.011  \text{ which is less than 0.03}
+\]
+Answer is N=1500, C.
+
+\subsection*{3.}
+\[
+ \text{For } N=2000 -> 2*e^{\frac{-1}{200}*2000} = 0.009  \text{ which is less than 0.03}
+\]
+Answer is N=2000, D.
+
+\section*{The Programming Questions}
+For the rest of the questions, I wrote functions in python and I specified which one I run for each question. More details can be observed in the source code. To run the scripts, please run "hw2.py".\\
+To plot classification line, please call the functions with plotting=True like in the following:\\
+\includegraphics[scale=1]{inf1.png} \\\\
+
+An example program run:\\
+\includegraphics[scale=0.7]{res.png} \\\\
+
+\section*{The Perceptron Learning Algorithm}
+\subsection*{4. and 5.}
+I run run_pla() function with N = 10.\\
+Sample plotting of predicted classification line:\\
+\includegraphics[scale=1]{Q4-5.png} \\\\
+1000 runs average iterations until converge: 10.97, P[f(x) != g(x)]= 0.111\\\\
+Answers: 4: B and 5: C
+
+\subsection*{6. and 7.}
+I run run_pla() function with N = 100.\\
+Sample plotting of predicted classification line:\\
+\includegraphics[scale=1]{Q6-7.png} \\\\
+1000 runs average iterations until converge: 115.251, P[f(x) != g(x)]= 0.013\\\\
+Answers: 6: B and 7: B
+
+\section*{Linear Regression}
+\subsection*{8.}
+I run run_linear_regression() function with N = 100.\\
+Sample plotting of predicted classification line:\\
+\includegraphics[scale=1]{Q8.png} \\\\
+1000 runs average:\\
+\[P[f(x) != g(x)] = E_{in}=  0.0391\]\\
+Answer: C
+
+\subsection*{9.}
+I run run_linear_regression2() function with N = 100.\\
+Sample plotting of predicted classification line with 1000 out of sample points:\\
+\includegraphics[scale=1]{Q9.png} \\\\
+1000 runs average:\\
+\[P[f(x) != g(x)] = E_{out}=  0.048\]\\\\
+Answer: C
+
+\subsection*{10.}
+I run run_lr_pla() function with N = 10.\\ 
+Sample plotting of predicted classification line:\\
+\includegraphics[scale=1]{Q10.png} \\\\
+1000 runs average:\\
+Iterations until converge: 1.733\\\\
+Answer: A
+
+\section*{Nonlinear Transformation}
+\subsection*{11.}
+I run run_nonlinear_transformation() function with N = 1000.\\ 
+Sample plotting of predicted classification line:\\
+\includegraphics[scale=1]{Q11.png} \\\\
+1000 runs average:\\
+\[P[f(x) != g(x)] = E_{in}=  0.504\]\\\\
+Answer: D
+
+\subsection*{12.}
+When we tested each function in the choices, the hypothesis in the A choice gives the least disagreements with our predicted target function.\\
+Answer: A
+
+\subsection*{13.}
+I run run_nonlinear_transformation2() function with N = 1000.\\ 
+Sample plotting of predicted classification line with 1000 out of sample points:\\
+\includegraphics[scale=1]{Q13.png} \\\\
+\[P[f(x) != g(x)] = E_{out}=  0.101\]\\\\
+1000 runs average:\\
+Answer:  B
+
+\end{document}
