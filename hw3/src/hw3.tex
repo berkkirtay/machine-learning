@@ -1,0 +1,140 @@
+\documentclass{homework}
+\usepackage{amsmath}
+
+\title
+{
+CSE4088 Introduction to Machine Learning 
+Homework 3
+}
+
+\date{}
+\author{Berk Kırtay - 150118043}
+\begin{document}
+\maketitle
+
+\section*{Gradient Descent}
+For this section, Gradient_Descent.py is implemented. Script can be run to observe results. Plotting is included.\\
+Results after running Gradient_Descent.py:\\
+\includegraphics[scale=1]{gradient_descent.png}
+
+\subsection*{4.}
+The partial derivative of E(u,v) with respect to \(\frac{\partial E}{\partial u}\) is
+
+\[ \frac{\partial E}{\partial u} = 2*(u*e^v - 2*v*e^{-u}) * (e^v + 2*v*e^{-u})\]
+\subsection*{5. and 6.}
+In this section we apply gradient descent algorithm to the nonlinear error space function by 
+calculating the derivatives of squared residuals until error becomes less than \(10^{}-14\).
+Derivatives to apply gradient descent:
+\[ \frac{\partial E}{\partial u} = 2*(u*e^v - 2*v*e^{-u}) * (e^v + 2*v*e^{-u})\]
+\[ \frac{\partial E}{\partial v} = 2*(u*e^v - 2*v*e^{-u}) * (u*e^v - 2*e^{-u})\]
+
+Number of iterations until error becomes 1.2086833944220747e-15
+is 10.\\
+The latest (u,v) pair is (0.04473629039778207, 0.023958714099141746)\\
+
+Plotting of the (u,v) pair on every iteration:\\
+\includegraphics[scale=1]{gradient_descent1.png}
+The answers are 5: D, and 6: E
+
+\subsection*{7.}
+The error does not converge and stops at 0.13981379199615315 which is close to \(10^-1\)
+
+The latest (u,v) pair is (6.29707589930517, -2.852306954077811))\\
+
+Plotting of the (u,v) pair on every iteration:\\
+\includegraphics[scale=1]{gradient_descent2.png}
+The answer is A.
+
+\section*{Logistic Regression}
+For this section, Logistic\_Regression.py is implemented. Script can be run to observe results. Plotting is included.\\
+Results after running Logistic\_Regression.py:\\
+\includegraphics[scale=1]{logistic_regression.png}\\
+
+The used formulas for the logistic regression algorithm are:\\
+\[\text{Fixed step size: } w(1) = w(0) + n\nabla E_{in} \]
+\[\text{v is calculated by stochastic gradient descent: } \nabla E_{in} = -\frac{1}{N} \sum_{n=1}^N \frac{y_n*x_n}{ln(1 + e^{y_n*w^T(t)*x_n}})  \]
+\[\text{cross entropy error: }E_{out}(w) = \frac{1}{N} \sum_{n=1}^N ln(1 + e^{-y_n*w^T*x_n})\]
+
+More details can be found in the source-code.
+
+Predicted line on 100 points by logistic regression algorithm:\\
+\includegraphics[scale=1]{logistic_regression1.png}
+
+\subsection*{8.} 
+I used the cross entropy error formula to calculate \(E_out\).\\
+
+Average Eout after 100 runs: 0.09444365341119473.\\
+The answer is D.
+\subsection*{9.} 
+Average epochs after 100 runs: 338.58.\\
+The answer is A.
+
+\section*{Regularization with weight decay}
+For this section, Linear\_Regression.py is implemented. Script can be run to observe results. Some data scattering is included.\\
+Results after running Linear\_Regression.py:\\
+\includegraphics[scale=1]{linear_regression.png}\\
+
+\subsection*{2.} 
+Actual in-sample data: \\
+\includegraphics[scale=0.8]{q21.png}\\
+Predicted in-sample data: \\
+\includegraphics[scale=0.8]{q22.png}\\
+
+Actual out-of-sample data: \\
+\includegraphics[scale=0.8]{q23.png}\\
+Predicted out-of-sample data: \\
+\includegraphics[scale=0.8]{q24.png}\\
+
+Ein: 0.02857142857142857, Eout: 0.084 \\
+The answer is A.
+\subsection*{3.} 
+0.02857142857142857, Eout: 0.08 \\
+The answer is D.
+\subsection*{4.} 
+Q4: Ein: 0.37142857142857144, Eout: 0.436 \\
+The answer is E.
+\subsection*{5.} 
+k = -1 \\
+The answer is D.
+\subsection*{6.} 
+Eout: 0.056 \\
+The answer is B.
+
+\section*{Neural Networks}
+For this section, Neural\_Network.py is implemented using the formulas below. Script can be run to observe results.\\
+\textbf{Neural Network operators:}\\
+\[
+w_{ij}^{(l)} =
+\left\{
+	\begin{array}{ll}
+		  1 \leq l \leq L \text{ ~~~~~~~~Layers}  \\
+		  0 \leq i \leq d^{(l - 1)} \text{ ~~~Inputs}  \\
+            1 \leq j \leq d^{(l)} \text{ ~~~~~Outputs}  \\
+	\end{array}
+\right\}
+\]
+\textbf{Activation function: }
+\[\frac{(e^s - e^{-s})}{(e^s + e^{-s})} \]
+\textbf{Forward propagation: }
+\[x_j^{(l)} = \theta(s_j^{(l)}) = \theta(\sum_{i = 0}^{d^{(l - 1)}} w_{ij}^{(l)} * x_i^{(l - 1)})\]
+\textbf{Backward propagation: }\\
+\[\text{For final layer: } \delta_1^{(L)} = 2*(x_1^{(L)} - y_n)*(1 - \theta^2(s_1^{(L)}))\]
+
+\[\text{For other layers: } \delta_i^{(l - 1)} = (1 - (x_i^{(l - 1)})^2) * \sum_{j = 1}^{d^{(l)}} w_{ij}^{(l)}* \delta_j^{(l)}\]
+
+\[\text{Updating perceptron weights: } w_{ij}^{(l)} \leftarrow w_{ij}^{(l)} - n*x_i^{(l - 1)} * \delta_j^{(l)}\] \\
+
+Results after running Neural\_Network.py:\\
+\includegraphics[scale=1]{neural_network.png}\\
+
+\subsection*{8.} 
+Total number of operations is: 28. More details can be observed from run_q8() function in the source-code \\
+The answer is A.
+\subsection*{9.} 
+By setting 36 hidden layers with 1 weight we count all the weights in the neural network
+as 46. More details can be observed from run_q9() function in the source-code \\
+The answer is A.
+\subsection*{10.} 
+By setting 2 hidden layers with weights of 18, 18 we count all the weights in the neural network as 522. More details can be observed from run_q10() function in the source-code.\\ 
+The answer is E.
+\end{document}
