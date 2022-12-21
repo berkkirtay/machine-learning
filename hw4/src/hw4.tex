@@ -1,0 +1,70 @@
+\documentclass{homework}
+\usepackage{amsmath}
+
+\title
+{
+CSE4088 Introduction to Machine Learning 
+Homework 4
+}
+
+\date{}
+\author{Berk Kırtay - 150118043}
+\begin{document}
+\maketitle
+
+\section*{Polynomial Kernels}
+For all the sections, hw4.py is implemented. More details and comments can be found in the source code. The functions q2(), q3(), q4() and q5_q6() must be run in the hw4.py to acquire the answers to the questions of this section.\\
+Results after running the mentioned functions:\\
+\includegraphics[scale=0.7]{first_section.png}
+
+\subsection*{2.}
+The classifier 0 has the highest Ein among others with Ein: 10.588396653408317%.
+So, the answer is A.
+
+\subsection*{3.}
+The classifier 1 has the lowest Ein among others with Ein: 1.4401316691811772%.
+So, the answer is A.
+
+\subsection*{4.}
+Difference between the number of support vectors of these two classifiers is 1793.
+It is the closest to the 1800, so, the answer is C.
+
+\subsection*{5.}
+Answer dd must be correct because the maximum C
+achieves the lowest Ein and all other values do not strictly
+decrease as it is mentioned in the other answers.
+The output of this question:\\
+\includegraphics[scale=0.7]{q5.png}
+
+So, the answer is D.
+\subsection*{6.}
+All other choices are incorrect except B. The number of support vectors is
+lower at Q=5 for C=0.001.
+The output of this question:\\
+\includegraphics[scale=0.7]{q6.png}
+So, the answer is B.
+
+\section*{Cross Validation}
+The functions q7() and q8() must be run in the hw4.py to acquire the answers to the questions of this section.\\
+Results after running the mentioned functions:\\
+\includegraphics[scale=1]{second_section.png}
+
+\subsection*{7.} 
+As we can see from the output, C=0.001 is most selected with 37 times over 100 runs.
+So, the answer is B.
+\subsection*{8.} 
+As we can see from the output, the average value of Ecv over the 100 runs is 0.0049 which is the closest to 0.005.
+So, the answer is C
+
+\section*{RBF Kernel}
+The function q9()_q10() must be run in the hw4.py to acquire the answers to the questions of this section.\\
+Results after running the mentioned function:\\
+\includegraphics[scale=1]{third_section.png}
+
+\subsection*{9.} 
+1000000=\(10^6\) gives the lowest value of Ein.
+So, the answer is E.
+\subsection*{10.} 
+100 gives the lowest value of Ein.
+So, the answer is C.
+\end{document}
