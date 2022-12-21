@@ -114,13 +114,16 @@ def test_neural_network():
     X = [[1, 2, 3, 4, 2], [1, 5, 3, 4, 2], [
         1, 2, 3, 4, 12], [-1, 2, -3, 4, 2]]
 
-    Y = [0.1, 0.2, 1, 0.01]
+    Y = [-1, 1, 1, -1]
 
     nn = NeuralNetwork(2, [5, 3, 1])
     for i in range(100):
         nn.train(X, Y)
 
     print(f'Ein: {nn.test(X, Y)}')
+
+
+test_neural_network()
 
 
 def run_q8():
