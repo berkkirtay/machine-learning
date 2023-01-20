@@ -1,1 +1,0 @@
-To run the scripts, please run src/hw2.py.
